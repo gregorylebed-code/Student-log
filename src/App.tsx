@@ -35,7 +35,7 @@ import {
   Clock,
   RotateCcw,
   Users,
-  GraduationCap,
+  Activity,
   Image as ImageIcon,
   Settings,
   Phone,
@@ -947,10 +947,10 @@ export default function App() {
         >
           <div className="flex flex-col items-center mb-8">
             <div className="w-12 h-12 bg-zinc-900 rounded-2xl flex items-center justify-center mb-4">
-              <Shield className="text-white w-6 h-6" />
+              <Activity className="text-white w-6 h-6" />
             </div>
-            <h1 className="text-2xl font-semibold tracking-tight">Student Log</h1>
-            <p className="text-zinc-500 text-sm mt-1">Secure, private, and intelligent.</p>
+            <h1 className="text-2xl font-semibold tracking-tight">Classroom Pulse</h1>
+            <p className="text-zinc-500 text-sm mt-1">Declutter your mind. Track the wins.</p>
           </div>
 
           <form onSubmit={handleAuth} className="space-y-4">
@@ -1028,11 +1028,11 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-200">
-              <GraduationCap className="text-white w-6 h-6" />
+              <Activity className="text-white w-6 h-6" />
             </div>
             <div>
-              <h1 className="font-bold tracking-tight text-slate-900 text-sm sm:text-lg leading-tight">Teacher's Master Log</h1>
-              <p className="text-[8px] sm:text-[10px] font-bold uppercase tracking-widest text-slate-400">Academic Year 2025-26</p>
+              <h1 className="font-bold tracking-tight text-slate-900 text-sm sm:text-lg leading-tight">Classroom Pulse</h1>
+              <p className="text-[8px] sm:text-[10px] font-bold uppercase tracking-widest text-slate-400">Real-Time Insights Dashboard</p>
             </div>
           </div>
           <div className="flex items-center gap-2 sm:gap-4">
@@ -1211,7 +1211,7 @@ export default function App() {
           <section className="bg-white rounded-[32px] border border-slate-200 shadow-sm overflow-hidden transition-all focus-within:border-indigo-500 focus-within:ring-4 focus-within:ring-indigo-500/5">
             <div className="p-4 bg-slate-50/50 border-b border-slate-100 flex flex-col sm:flex-row gap-3">
               <div className="flex-1 relative">
-                <GraduationCap className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <Activity className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                 <input 
                   type="text" 
                   value={newStudentName} 

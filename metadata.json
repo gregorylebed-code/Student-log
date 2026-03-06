@@ -1,0 +1,5 @@
+{
+  "name": "Student Log",
+  "description": "An intelligent student observation and logging application powered by Gemini AI and Supabase.",
+  "requestFramePermissions": ["microphone"]
+}

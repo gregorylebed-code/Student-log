@@ -6,47 +6,14 @@ import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import imageCompression from 'browser-image-compression';
 import { 
-  Search, 
-  Plus, 
-  LogOut, 
-  Tag, 
-  Calendar, 
-  Loader2, 
-  MessageSquare,
-  Shield,
-  User,
-  Lock,
-  ChevronRight,
-  Mic,
-  MicOff,
-  Pin,
-  Trash2,
-  Undo,
-  Download,
-  Filter,
-  AlertCircle,
-  ExternalLink,
-  CheckSquare,
-  Square,
-  Edit2,
-  Copy,
-  Sparkles,
-  X,
-  Clock,
-  RotateCcw,
-  Users,
-  Activity,
-  Image as ImageIcon,
-  Settings,
-  Phone,
-  Mail,
-  MessageCircle,
-  TrendingUp,
-  ChevronDown,
-  ChevronUp,
-  LayoutGrid
+  Search, Plus, LogOut, Tag, Calendar, Loader2, MessageSquare, Shield, User, Lock, 
+  ChevronRight, Mic, MicOff, Pin, Trash2, Undo, Download, Filter, AlertCircle, 
+  ExternalLink, CheckSquare, Square, Edit2, Copy, Sparkles, X, Clock, RotateCcw, 
+  Users, GraduationCap, ImageIcon, Settings, Phone, Mail, MessageCircle, TrendingUp, 
+  ChevronDown, ChevronUp, LayoutGrid, Activity 
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 

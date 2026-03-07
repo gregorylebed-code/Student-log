@@ -1,10 +1,24 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { Note } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+let aiInstance: GoogleGenAI | null = null;
+
+function getAi() {
+  if (!aiInstance) {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey || apiKey === 'undefined') {
+      console.warn("GEMINI_API_KEY is not defined. AI features will not work.");
+      // Return a mock or handle gracefully. For now, we'll still try to initialize 
+      // but we should ideally guard all calls.
+    }
+    aiInstance = new GoogleGenAI({ apiKey: apiKey || "" });
+  }
+  return aiInstance;
+}
 
 export async function categorizeNote(content: string, currentTime: string, hasImage: any) {
   try {
+    const ai = getAi();
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
       contents: `Current Time: ${currentTime}\nNote Content: ${content}\n${hasImage ? "Note has an attached image." : ""}\nCategorize this student observation and extract a deadline if mentioned.`,
@@ -38,6 +52,7 @@ export async function categorizeNote(content: string, currentTime: string, hasIm
 }
 
 export async function smartSearch(query: string, notes: Note[]) {
+  const ai = getAi();
   const context = notes.map(n => `[${n.student_name} - ${n.created_at}]: ${n.content}`).join("\n");
   const response = await ai.models.generateContent({
     model: "gemini-3-flash-preview",
@@ -47,6 +62,7 @@ export async function smartSearch(query: string, notes: Note[]) {
 }
 
 export async function summarizeNotes(notes: Note[]) {
+  const ai = getAi();
   const context = notes.map(n => n.content).join("\n");
   const response = await ai.models.generateContent({
     model: "gemini-3-flash-preview",
@@ -56,6 +72,7 @@ export async function summarizeNotes(notes: Note[]) {
 }
 
 export async function semanticSearch(query: string, notes: Note[]) {
+  const ai = getAi();
   const response = await ai.models.generateContent({
     model: "gemini-3-flash-preview",
     contents: `Query: ${query}\nNotes:\n${JSON.stringify(notes.map(n => ({ id: n.id, content: n.content, student: n.student_name })))}\nReturn the IDs of the notes that are semantically relevant to the query.`,
@@ -71,6 +88,7 @@ export async function semanticSearch(query: string, notes: Note[]) {
 }
 
 export async function parseVoiceLog(transcript: string) {
+  const ai = getAi();
   const response = await ai.models.generateContent({
     model: "gemini-3-flash-preview",
     contents: `Transcript: ${transcript}\nExtract the student name and the actual observation content from this voice log.`,
@@ -90,6 +108,7 @@ export async function parseVoiceLog(transcript: string) {
 }
 
 export async function draftParentSquareMessage(noteContent: string, studentName: string) {
+  const ai = getAi();
   const response = await ai.models.generateContent({
     model: "gemini-3-flash-preview",
     contents: `Student: ${studentName}\nNote: ${noteContent}\n\nDraft a polite, professional, and encouraging message for a parent based on this observation. The message should be suitable for ParentSquare.`,
